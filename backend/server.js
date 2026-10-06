@@ -11,6 +11,9 @@ const mongoUri = process.env.MONGO_URI;
 app.use(cors());
 app.use(express.json());
 
+const jobRoutes = require("./routes/jobRoutes");
+app.use("/api/jobs", jobRoutes);
+
 app.get("/", (req, res) => {
     res.send("Job Portal Backend is running");
 });
@@ -42,3 +45,4 @@ const connectMongo = async () => {
 };
 
 connectMongo();
+
