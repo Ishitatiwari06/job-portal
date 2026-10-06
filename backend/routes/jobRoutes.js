@@ -22,9 +22,39 @@ router.post("/", async (req, res) => {
 // Get all jobs
 router.get("/", async (req, res) => {
     try {
-        const jobs = await Job.find();
+        const { title, location, jobType, skill, minSalary } = req.query;
+
+        let filter = {};
+
+        // Search by title
+        if (title) {
+            filter.title = { $regex: title, $options: "i" };
+        }
+
+        // Filter by location
+        if (location) {
+            filter.location = { $regex: location, $options: "i" };
+        }
+
+        // Filter by job type
+        if (jobType) {
+            filter.jobType = jobType;
+        }
+
+        // Filter by skill
+        if (skill) {
+            filter.skills = { $in: [skill] };
+        }
+
+        // Minimum salary
+        if (minSalary) {
+            filter["salary.min"] = { $gte: Number(minSalary) };
+        }
+
+        const jobs = await Job.find(filter);
 
         res.status(200).json(jobs);
+
     } catch (error) {
         res.status(500).json({
             message: "Failed to fetch jobs",
