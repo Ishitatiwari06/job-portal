@@ -1,11 +1,16 @@
 from flask import Flask, jsonify
 from db import client
 from routes.job_routes import job_routes
+from routes.user_routes import user_routes
+from routes.application_routes import application_routes
+from routes.ml_routes import ml_routes
 
 app = Flask(__name__)
 
 app.register_blueprint(job_routes)
-
+app.register_blueprint(user_routes)
+app.register_blueprint(application_routes)
+app.register_blueprint(ml_routes)
 
 @app.route("/")
 def home():
