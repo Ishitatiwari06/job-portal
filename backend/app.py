@@ -4,9 +4,10 @@ from routes.job_routes import job_routes
 from routes.user_routes import user_routes
 from routes.application_routes import application_routes
 from routes.ml_routes import ml_routes
+from flask_cors import CORS
 
 app = Flask(__name__)
-
+CORS(app)
 app.register_blueprint(job_routes)
 app.register_blueprint(user_routes)
 app.register_blueprint(application_routes)
@@ -37,3 +38,5 @@ def test_db():
 
 if __name__ == "__main__":
     app.run(debug=True, port=5000)
+
+# python backend/app.py

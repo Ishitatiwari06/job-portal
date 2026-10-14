@@ -1,0 +1,102 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JobConnect | Find Your Next Job</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header class="navbar">
+        <a href="#" class="logo">JobConnect<span>.</span></a>
+        <nav>
+            <a href="#jobs">Find Jobs</a>
+            <a href="#salary">Salary Predictor</a>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <p class="eyebrow">YOUR CAREER STARTS HERE</p>
+        <h1>Find a job that fits <span>your future.</span></h1>
+        <p class="hero-text">
+            Explore opportunities from top companies and discover
+            your potential with machine learning.
+        </p>
+        <a href="#jobs" class="primary-btn">Explore Jobs ↓</a>
+    </section>
+
+    <main>
+        <section id="jobs" class="section">
+            <div class="section-heading">
+                <div>
+                    <p class="eyebrow">OPPORTUNITIES FOR YOU</p>
+                    <h2>Latest Jobs</h2>
+                </div>
+                <button id="refresh-jobs" class="secondary-btn">
+                    Refresh Jobs
+                </button>
+            </div>
+
+            <p id="jobs-message" class="message">
+                Loading jobs...
+            </p>
+            <div id="jobs-container" class="jobs-grid"></div>
+        </section>
+
+        <section id="salary" class="salary-section">
+            <div class="salary-info">
+                <p class="eyebrow">AI-POWERED CAREER TOOL</p>
+                <h2>Discover your earning potential.</h2>
+                <p>
+                    Enter your experience and number of relevant skills.
+                    Our Linear Regression model will estimate a salary
+                    based on the jobs stored in our database.
+                </p>
+                <p class="note">
+                    This is an experimental estimate, not a guaranteed salary.
+                </p>
+            </div>
+
+            <form id="salary-form" class="salary-form">
+                <label for="experience">Experience (years)</label>
+                <input
+                    type="number"
+                    id="experience"
+                    min="0"
+                    max="60"
+                    step="1"
+                    value="2"
+                    required
+                >
+
+                <label for="skills-count">Number of relevant skills</label>
+                <input
+                    type="number"
+                    id="skills-count"
+                    min="0"
+                    max="100"
+                    step="1"
+                    value="4"
+                    required
+                >
+
+                <button type="submit" class="primary-btn full-width">
+                    Predict My Salary
+                </button>
+
+                <p id="salary-message" class="message" aria-live="polite"></p>
+                <div id="salary-result" class="salary-result" hidden></div>
+            </form>
+        </section>
+    </main>
+
+    <footer>
+        <a href="#" class="logo">JobConnect<span>.</span></a>
+        <p>Built with Flask, MongoDB and Machine Learning.</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
