@@ -213,6 +213,10 @@ h2 {
     background: var(--light-blue);
 }
 
+.predictor-section {
+    padding-top: 0;
+}
+
 .salary-info p:not(.eyebrow) {
     color: var(--muted);
     margin-top: 18px;
@@ -234,7 +238,21 @@ h2 {
     box-shadow: 0 8px 25px rgba(15, 23, 42, 0.05);
 }
 
+.predictor-form {
+    padding: 30px;
+    background: white;
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    box-shadow: 0 8px 25px rgba(15, 23, 42, 0.05);
+}
+
 .salary-form label {
+    display: block;
+    font-weight: 700;
+    margin: 14px 0 7px;
+}
+
+.predictor-form label {
     display: block;
     font-weight: 700;
     margin: 14px 0 7px;
@@ -248,7 +266,20 @@ h2 {
     font-size: 16px;
 }
 
+.predictor-form input {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #cbd5e1;
+    border-radius: 8px;
+    font-size: 16px;
+}
+
 .salary-form input:focus {
+    outline: 2px solid #a5b4fc;
+    border-color: var(--blue);
+}
+
+.predictor-form input:focus {
     outline: 2px solid #a5b4fc;
     border-color: var(--blue);
 }
@@ -273,6 +304,11 @@ h2 {
     display: block;
     font-size: 12px;
     font-weight: 400;
+}
+
+.predictor-info p:not(.eyebrow) {
+    color: var(--muted);
+    margin-top: 18px;
 }
 
 footer {
@@ -321,7 +357,15 @@ footer p {
         padding: 50px 5%;
     }
 
+    .predictor-section {
+        padding-top: 0;
+    }
+
     .salary-form {
+        padding: 22px;
+    }
+
+    .predictor-form {
         padding: 22px;
     }
 

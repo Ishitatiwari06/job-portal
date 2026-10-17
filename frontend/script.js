@@ -154,3 +154,49 @@ salaryForm.addEventListener("submit", async event => {
 });
 
 loadJobs();
+
+const shortlistForm = document.getElementById("shortlist-form");
+
+shortlistForm.addEventListener("submit", async function (event) {
+    event.preventDefault();
+
+    const result = document.getElementById("shortlist-result");
+    result.textContent = "Predicting...";
+
+    const experience = Number(
+        document.getElementById("candidate-experience").value
+    );
+
+    const skills_match = Number(
+        document.getElementById("skills-match").value
+    );
+
+    try {
+        const response = await fetch(
+            `${API_BASE}/api/predict-shortlist`,
+            {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({
+                    experience: experience,
+                    skills_match: skills_match
+                })
+            }
+        );
+
+        const data = await response.json();
+
+        if (!response.ok) {
+            throw new Error(data.error || "Prediction failed");
+        }
+
+        result.textContent =
+            `Prediction: ${data.prediction} | ` +
+            `Shortlist probability: ${data.shortlist_probability}%`;
+
+    } catch (error) {
+        result.textContent = "Error: " + error.message;
+    }
+});
